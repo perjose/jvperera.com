@@ -5,7 +5,6 @@ source "https://rubygems.org"
 gem "jekyll", "~> 4.3"
 
 # --- THEME ---
-gem "jekyll-swiss"
 
 # --- PLUGINS ---
 group :jekyll_plugins do
