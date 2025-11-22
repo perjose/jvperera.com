@@ -1,0 +1,22 @@
+[
+    {
+        "loc": "https://jvperera.com/",
+        "changefreq": "monthly",
+        "priority": "1.0"
+    },
+    {
+        "loc": "https://jvperera.com/details.html",
+        "changefreq": "weekly",
+        "priority": "0.8"
+    },
+    {
+        "loc": "https://jvperera.com/spanish/index.html",
+        "changefreq": "weekly",
+        "priority": "0.8"
+    },
+    {
+        "loc": "https://jvperera.com/es/details.html",
+        "changefreq": "weekly",
+        "priority": "0.8"
+    }
+]

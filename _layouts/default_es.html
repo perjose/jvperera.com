@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+{% include head_es.html %}
+</head>
+<body>
+  
+    <header>
+        {% include header_es.html %}
+    </header>
+    
+    <main class="content">
+        {{ content }} 
+    </main>
+
+    <footer class="site-footer section-padding">
+        {% include footer_es.html %}
+    </footer>
+
+
+
+
+    <!-- JAVASCRIPT FILES -->
+
+    <script 
+        src="{{ '/assets/js/script.js' | relative_url }}" 
+        defer 
+    ></script>
+
+
+
+</body>
+</html>
