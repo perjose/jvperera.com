@@ -18,14 +18,70 @@
 
 
 
-    <!-- JAVASCRIPT FILES -->
+    <!-- JAVASCRIPT FILES 
 
 
     <script 
         src="{{ '/assets/js/script.js' | relative_url }}" 
         defer 
     ></script>
+-->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const toggleBtn = document.querySelector(".navbar-toggler");
+    const menu = document.querySelector("#navbarNav");
 
+    if (!toggleBtn || !menu) return;
+
+    // Ensure menu is hidden by default
+    menu.style.display = "none";
+
+    const openMenu = () => {
+        menu.style.display = "block";
+        toggleBtn.setAttribute("aria-expanded", "true");
+    };
+
+    const closeMenu = () => {
+        menu.style.display = "none";
+        toggleBtn.setAttribute("aria-expanded", "false");
+    };
+
+    const toggleMenu = () => {
+        const isOpen = toggleBtn.getAttribute("aria-expanded") === "true";
+        isOpen ? closeMenu() : openMenu();
+    };
+
+    // Toggle the dropdown when pressing the button
+    toggleBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        toggleMenu();
+    });
+
+    // Close when tapping outside (mobile and desktop)
+    document.addEventListener("click", (e) => {
+        const isClickInside = menu.contains(e.target) || toggleBtn.contains(e.target);
+        const isOpen = toggleBtn.getAttribute("aria-expanded") === "true";
+
+        if (!isClickInside && isOpen) {
+            closeMenu();
+        }
+    });
+
+    // Close when scrolling (useful on phones)
+    window.addEventListener("scroll", () => {
+        const isOpen = toggleBtn.getAttribute("aria-expanded") === "true";
+        if (isOpen) closeMenu();
+    });
+
+    // Optional: hide menu when resizing (prevents weird states)
+    window.addEventListener("resize", () => {
+        const isOpen = toggleBtn.getAttribute("aria-expanded") === "true";
+        if (window.innerWidth > 991 && isOpen) closeMenu();
+    });
+});
+// UPDATE THE YEAR
+document.getElementById('current-year').textContent = new Date().getFullYear();
+</script>
 
 
 </body>

@@ -2,48 +2,6 @@
 COPIED FROM SITE
 *************************************/
 /* ==========================================================================
-   1. bootstrap-icons.css (Used Portions)
-   ========================================================================== */
-@font-face {
-  font-display: block;
-  font-family: "bootstrap-icons";
-  font-display: swap;
-  src: url("/fonts/bootstrap-icons.woff2?e34853135f9e39acf64315236852cd5a") format("woff2"),
-    url("/fonts/bootstrap-icons.woff?e34853135f9e39acf64315236852cd5a") format("woff");
-}
-
-.bi::before,
-[class^="bi-"]::before,
-[class*=" bi-"]::before {
-  display: inline-block;
-  font-family: bootstrap-icons !important;
-  font-style: normal;
-  font-weight: normal !important;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-  vertical-align: -.125em;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-.bi-check-circle-fill::before {
-  content: "\f26a";
-}
-
-.bi-envelope-fill::before {
-  content: "\f32c";
-}
-
-.bi-geo-alt-fill::before {
-  content: "\f3e7";
-}
-
-.bi-x-circle-fill::before {
-  content: "\f622";
-}
-
-/* ==========================================================================
    2. bootstrap.min.css (Used Portions)
    ========================================================================== */
 :root,
@@ -1324,6 +1282,14 @@ textarea.form-control {
   --bs-aspect-ratio: 56.25%
 }
 
+.fixed-top {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+}
+
 .sticky-top {
   position: -webkit-sticky;
   position: sticky;
@@ -1515,11 +1481,12 @@ strong {
 .section-bg {
   background-color: var(--section-bg-color);
 }
-
+/*
 .section-padding {
   padding-top: 100px;
   padding-bottom: 100px;
 }
+*/
 
 .section-overlay {
   content: "";
@@ -1530,7 +1497,9 @@ strong {
   bottom: 0;
   left: 0;
 }
-
+.detail-overlay{
+  height: 276px;
+}
 ::selection {
   background-color: var(--primary-color);
   color: var(--dark-color);
@@ -1816,15 +1785,11 @@ strong {
 }
 
 .hero-section {
-  /*background-image: url('/assets/media/hero.webp');*/
-  background-repeat: no-repeat;
-  background-size: cover;
   background-position: center;
   position: relative;
-
-  height: 100vh;
-  min-height: 670px;
-  margin-bottom: -90px;
+  height: 60vh;
+  min-height: 450px;
+  margin-bottom: -70px;
 }
 
 .hero-section .ratio {
@@ -1851,9 +1816,9 @@ strong {
   position: relative;
   z-index: 22;
 }
-
+/*
 .section-bg-image {
-  /*background-image: url('/assets/media/field.webp');*/
+  background-image: url('/assets/media/field.webp');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -1902,7 +1867,7 @@ strong {
   color: #23953c;
   max-width: 150px;
 }
-
+*/
 .about-section {
   padding-bottom: 70px;
 }
@@ -2013,6 +1978,7 @@ strong {
 
 .custom-block-info {
   padding-top: 10px;
+  z-index: 222;
 }
 
 .custom-block-image-wrap+.custom-block-info {
@@ -2058,7 +2024,7 @@ strong {
 }
 
 .events-detail-section .custom-block-info {
-  padding: 40px 60px;
+  padding: 100px 60px;
 }
 
 .events-detail-info {
@@ -2277,12 +2243,12 @@ strong {
   h6 {
     font-size: 16px;
   }
-
+/*
   .section-padding {
     padding-top: 50px;
     padding-bottom: 50px;
   }
-
+*/
   nav.navbar {
     background-color: var(--primary-color);
   }
@@ -2306,19 +2272,15 @@ strong {
     margin: 5px;
     padding: 0;
   }
-
+/*
   .hero-section {
     position: relative;
     top: 82px;
     margin-bottom: 82px;
-  }
+  }*/
 
   .events-listing-section {
     margin-bottom: 50px;
-  }
-
-  .events-detail-section .custom-block-info {
-    padding: 40px;
   }
 
   .events-detail-info {
@@ -2329,9 +2291,6 @@ strong {
     width: 60%;
   }
 
-  .events-detail-section .contact-info-item {
-    width: 70%;
-  }
 
   .section-bg-image {
     margin-bottom: 0;
@@ -2578,7 +2537,7 @@ strong {
 .navbar .navbar-collapse {
   flex-grow: 1;             /* allow collapse area to expand */
   display: flex;
-  justify-content: right;  /* center the nav items horizontally */
+  justify-content: center;  /* center the nav items horizontally */
 }
 
 .navbar .navbar-nav {
@@ -2586,6 +2545,7 @@ strong {
   display: flex;
   justify-content: center;  /* center items inside the UL */
   gap: 1.5rem;              /* optional spacing between links */
+  margin-left: auto;
 }
 
 /* Optional: ensure the mobile toggle stays aligned properly */
@@ -2606,10 +2566,6 @@ strong {
 
 .events-listing-section {
   margin-bottom: 100px;
-}
-
-.events-detail-section .custom-block-info {
-  padding: 40px 60px;
 }
 
 .events-detail-info {
@@ -2658,3 +2614,53 @@ strong {
         max-width: 100%;
     }
 }
+/*NAVBAR FIX*/
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+}
+
+.navbar .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;    /* prevent wrapping */
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.navbar-collapse {
+    flex-grow: 1;
+    justify-content: flex-end;
+}
+
+.navbar-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+@media (max-width: 991px) {
+    /* On mobile, allow wrapping ONLY for the menu */
+    .navbar .container {
+        flex-wrap: wrap;
+    }
+
+    .navbar-collapse {
+        width: 100%;
+    }
+
+    .navbar-nav {
+        flex-direction: column;
+        width: 100%;
+        align-items: flex-start;
+    }
+}
+

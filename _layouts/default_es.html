@@ -20,14 +20,34 @@
 
 
 
-    <!-- JAVASCRIPT FILES -->
+    <!-- JAVASCRIPT FILES
 
     <script 
         src="{{ '/assets/js/script.js' | relative_url }}" 
         defer 
     ></script>
+ -->
 
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const toggler = document.querySelector(".navbar-toggler");
+  const target = document.querySelector(toggler.getAttribute("data-bs-target"));
 
+  if (!toggler || !target) return;
+
+  toggler.addEventListener("click", () => {
+    const isExpanded = toggler.getAttribute("aria-expanded") === "true";
+
+    // Toggle aria-expanded for accessibility
+    toggler.setAttribute("aria-expanded", String(!isExpanded));
+
+    // Toggle the "show" class on the target
+    target.classList.toggle("show", !isExpanded);
+  });
+});
+// UPDATE THE YEAR
+document.getElementById('current-year').textContent = new Date().getFullYear();
+</script>
 
 </body>
 </html>
