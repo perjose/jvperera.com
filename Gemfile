@@ -12,6 +12,8 @@ group :jekyll_plugins do
   gem "jekyll-seo-tag"
   gem "jekyll-sitemap"
   gem "jekyll-paginate"
+  gem "logger"
+  gem "bigdecimal"
 end
 
 # --- LOCAL DEVELOPMENT ---
