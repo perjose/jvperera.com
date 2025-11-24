@@ -30,20 +30,56 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
-  const toggler = document.querySelector(".navbar-toggler");
-  const target = document.querySelector(toggler.getAttribute("data-bs-target"));
+    const toggleBtn = document.querySelector(".navbar-toggler");
+    const menu = document.querySelector("#navbarNav");
 
-  if (!toggler || !target) return;
+    if (!toggleBtn || !menu) return;
 
-  toggler.addEventListener("click", () => {
-    const isExpanded = toggler.getAttribute("aria-expanded") === "true";
+    // Ensure menu is hidden by default
+    menu.style.display = "none";
 
-    // Toggle aria-expanded for accessibility
-    toggler.setAttribute("aria-expanded", String(!isExpanded));
+    const openMenu = () => {
+        menu.style.display = "block";
+        toggleBtn.setAttribute("aria-expanded", "true");
+    };
 
-    // Toggle the "show" class on the target
-    target.classList.toggle("show", !isExpanded);
-  });
+    const closeMenu = () => {
+        menu.style.display = "none";
+        toggleBtn.setAttribute("aria-expanded", "false");
+    };
+
+    const toggleMenu = () => {
+        const isOpen = toggleBtn.getAttribute("aria-expanded") === "true";
+        isOpen ? closeMenu() : openMenu();
+    };
+
+    // Toggle the dropdown when pressing the button
+    toggleBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        toggleMenu();
+    });
+
+    // Close when tapping outside (mobile and desktop)
+    document.addEventListener("click", (e) => {
+        const isClickInside = menu.contains(e.target) || toggleBtn.contains(e.target);
+        const isOpen = toggleBtn.getAttribute("aria-expanded") === "true";
+
+        if (!isClickInside && isOpen) {
+            closeMenu();
+        }
+    });
+
+    // Close when scrolling (useful on phones)
+    window.addEventListener("scroll", () => {
+        const isOpen = toggleBtn.getAttribute("aria-expanded") === "true";
+        if (isOpen) closeMenu();
+    });
+
+    // Optional: hide menu when resizing (prevents weird states)
+    window.addEventListener("resize", () => {
+        const isOpen = toggleBtn.getAttribute("aria-expanded") === "true";
+        if (window.innerWidth > 991 && isOpen) closeMenu();
+    });
 });
 // UPDATE THE YEAR
 document.getElementById('current-year').textContent = new Date().getFullYear();
