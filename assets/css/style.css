@@ -1986,7 +1986,7 @@ strong {
 }
 
 .custom-block-span {
-  color: var(--secondary-color);
+  color: var(--dark-color);
   font-weight: var(--font-weight-bold);
   min-width: 110px;
   margin-right: 10px;
